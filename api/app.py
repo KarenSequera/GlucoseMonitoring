@@ -1,8 +1,9 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import random
 
 app = Flask(__name__)
-
+CORS(app,origins=["http://localhost:3000", "https://glucosync.vercel.app/", "https://glucosync.vercel.app/"])
 # Placeholder for storing the previous glucose level and ISF (Insulin Sensitivity Factor)
 previous_glucose_level = 100
 ISF = 50  # Default ISF value, you can adjust it as needed
