@@ -23,10 +23,12 @@ def get_glucose():
 @app.route('/inject-insulin', methods=['POST'])
 def inject_insulin():
     global previous_glucose_level
+    global ISF
     
-    # Get the units of insulin to be injected from the request
+    # Get the units of insulin to be injected and ISF from the request
     data = request.get_json()
     units = data.get('units')
+    ISF = data.get('ISF', ISF)  # If ISF is not provided in the request, use the global ISF
     
     # Decrease glucose level based on insulin units and ISF
     previous_glucose_level -= units * ISF
