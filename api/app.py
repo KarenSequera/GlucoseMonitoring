@@ -17,6 +17,10 @@ def get_glucose():
     
     # Update previous glucose level
     previous_glucose_level = new_glucose_level
+
+    # Ensure glucose level does not go below 0
+    if previous_glucose_level < 0:
+        previous_glucose_level = 0
     
     return jsonify({'glucose_level': new_glucose_level})
 
